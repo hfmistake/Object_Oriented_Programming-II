@@ -1,34 +1,46 @@
 package AtvEmSala01;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
 
 public class LoginScreen {
-    private JPanel Main;
-    private JPanel Login;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton acessarButton;
-    private JButton limparButton;
+    private JPanel mainPanel;
+    JPanel loginPanel;
+    private JTextField loginField;
+    private JPasswordField passField;
+    JLabel loginLabel;
+    JLabel passLabel;
+    private JButton clearButton;
+    private JButton loginButton;
+    JLabel ifgLogo;
 
+    private final UsuarioDAO usuarioDAO;
+
+    private void OnLoginClick() {
+        // autenticate with DAO and show main screen
+        String login = loginField.getText();
+        String senha = new String(passField.getPassword());
+        if (usuarioDAO.autenticar(login, senha)) {
+            new MainScreen(login);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+            frame.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos.");
+        }
+    }
 
     public LoginScreen() {
-        DatabaseManager databaseManager = new DatabaseManager();
-        System.out.println(databaseManager.getConnection());
-        JFrame frame = new JFrame("LoginScreen");
-        frame.setContentPane(Main);
+        usuarioDAO = new UsuarioDAOImpl();
+        JFrame frame = new JFrame("Tela de Login");
+        frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-        frame.setSize(600,400);
-        Color corBorda = new Color(32,57,229);
-        Border border = BorderFactory.createLineBorder(corBorda, 6);
-        Login.setBorder(border);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        loginButton.addActionListener(e -> OnLoginClick());
+        clearButton.addActionListener(e -> {
+            loginField.setText("");
+            passField.setText("");
+        });
     }
-
-    public static void main(String[] args) {
-        new LoginScreen();
-    }
-
 }
