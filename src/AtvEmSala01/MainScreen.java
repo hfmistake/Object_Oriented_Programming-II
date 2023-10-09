@@ -1,6 +1,8 @@
 package AtvEmSala01;
 
 import javax.swing.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class MainScreen {
     private JPanel mainPanel;
@@ -16,5 +18,13 @@ public class MainScreen {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {
+            Logger logger = Logger.getLogger(Lista01.Ex06.MainScreen.class.getName());
+            logger.severe("An error occurred while setting the look and feel:");
+            logger.severe(e.getMessage());
+            logger.log(Level.SEVERE, "Exception details:", e);
+        }
     }
 }
