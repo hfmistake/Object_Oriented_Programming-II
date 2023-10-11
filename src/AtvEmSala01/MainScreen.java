@@ -21,7 +21,7 @@ public class MainScreen {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(Lista01.Ex06.MainScreen.class.getName());
+            Logger logger = Logger.getLogger(AtvEmSala01.MainScreen.class.getName());
             logger.severe("An error occurred while setting the look and feel:");
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);
