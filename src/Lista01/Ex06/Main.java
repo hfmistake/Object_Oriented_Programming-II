@@ -3,11 +3,12 @@ package Lista01.Ex06;
 import javax.swing.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MainScreen {
+class MainScreen {
     private JPanel MainPanel;
     private JTabbedPane Panel;
     private JPanel ClientesPane;
@@ -62,12 +63,13 @@ public class MainScreen {
             clienteModel.addElement(cliente);
         }
     }
+
     public void filmesBoxModelTracker() {
-    filmeComboModel.removeAllElements();
-    for (Filme filme : filmes) {
-        filmeComboModel.addElement(filme.getFilme()); // Adiciona os filmes ao ComboBox
+        filmeComboModel.removeAllElements();
+        for (Filme filme : filmes) {
+            filmeComboModel.addElement(filme.getFilme()); // Adiciona os filmes ao ComboBox
+        }
     }
-}
 
 
     public void filmesModelTracker() {
@@ -209,15 +211,253 @@ public class MainScreen {
                 }
             }
             if (target == null) {
-                JOptionPane.showMessageDialog(null,"Erro inesperado.");
+                JOptionPane.showMessageDialog(null, "Erro inesperado.");
                 return;
             }
             Ingresso ingresso = new Ingresso();
             JOptionPane.showMessageDialog(null, ingresso.apresentarValorIngressos(target));
         });
     }
+}
+
+class ClienteEditor {
+    private JPanel MainPanel;
+    private JPanel Editor;
+    private JTextField NomeField;
+    private JLabel Title;
+    private JTextField IdadeField;
+    private JButton finalizarButton;
+    private JLabel NomeLabel;
+    private JLabel IdadeLabel;
+
+    public ClienteEditor(MainScreen telaPrincipal, Cliente cliente) {
+        JFrame frame = new JFrame("Editor de Cliente");
+        frame.setContentPane(MainPanel);
+        Title.setText("Editando Cliente:" + cliente.getNome());
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        NomeField.setText(cliente.getNome());
+        IdadeField.setText(String.valueOf(cliente.getIdade()));
+        finalizarButton.addActionListener(e -> {
+            String novoNome = NomeField.getText();
+            int novaIdade;
+            try {
+                novaIdade = Integer.parseInt(IdadeField.getText());
+            } catch (NumberFormatException err) {
+                JOptionPane.showMessageDialog(null, "Idade inválida.");
+                return;
+            }
+            if (novoNome == null || novoNome.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Nome inválido.");
+                return;
+            }
+            Cliente novoCliente = new Cliente(novoNome, novaIdade, cliente.getId());
+            telaPrincipal.alterarCliente(novoCliente);
+
+            frame.dispose();
+        });
+    }
+}
+
+class FilmeEditor {
+    private JPanel Editor;
+    private JLabel NomeFilmeLabel;
+    private JTextField NomeFilmeField;
+    private JLabel Title;
+    private JLabel DataLabel;
+    private JTextField DataFilmeField;
+    private JButton finalizarButton;
+    private JPanel MainPanel;
+    private JLabel TurnoFilmeLabel;
+    private JComboBox<String> TurnoBox;
+    private JTextField ValorIngressoField;
+    private JLabel ValorIngressoLabel;
+    private JTextField SalaField;
+    private JLabel SalaLabel;
+
+    public FilmeEditor(MainScreen mainScreen, Filme filme) {
+        JFrame frame = new JFrame("Editor de filme");
+        frame.setContentPane(MainPanel);
+        Title.setText("Editando Filme: " + filme.getFilme());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        NomeFilmeField.setText(filme.getFilme());
+        DataFilmeField.setText(filme.getDatadofilme().format(formatter));
+        TurnoBox.setSelectedItem(filme.getTurno());
+        SalaField.setText(String.valueOf(filme.getSala()));
+        ValorIngressoField.setText(String.valueOf(filme.getValor()));
+        finalizarButton.addActionListener(e -> {
+            String novoNome = NomeFilmeField.getText();
+            String novaDataTexto = DataFilmeField.getText();
+            String novoTurno = (String) TurnoBox.getSelectedItem();
+            String novaSalaTexto = SalaField.getText();
+            String novoValorTexto = ValorIngressoField.getText();
+            if (novoNome.isEmpty()) {
+                throw new NumberFormatException();
+            }
+            try {
+                LocalDate novaData = LocalDate.parse(novaDataTexto, formatter);
+                int novaSala = Integer.parseInt(novaSalaTexto);
+                double novoValor = Double.parseDouble(novoValorTexto);
+                Filme novoFilme = new Filme(filme.getId(), novoNome, novaData, novoTurno, novaSala, novoValor);
+                mainScreen.alterarFilme(novoFilme);
+                frame.dispose();
+            } catch (DateTimeParseException | NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Dados inválidos. Certifique-se de que todos os campos são preenchidos corretamente.");
+            }
+        });
+    }
+}
+
+class Filme {
+    int id;
+    String filme;
+    LocalDate datadofilme;
+    String turno;
+    int sala;
+    double valor;
+
+    public Filme(int id, String filme, LocalDate datadofilme, String turno, int sala, double valor) {
+        this.id = id;
+        this.filme = filme;
+        this.datadofilme = datadofilme;
+        this.turno = turno;
+        this.sala = sala;
+        this.valor = valor;
+    }
+
+    public String toString() {
+        int dia, mes, ano;
+        dia = datadofilme.getDayOfMonth();
+        mes = datadofilme.getMonthValue();
+        ano = datadofilme.getYear();
+        String valorFormatado = String.format("%.2f", valor);
+        return """
+                %d- %s(%d) |Sala:%d|Turno:%s|Valor:%s R$|""".formatted(id, filme, ano, sala, turno, valorFormatado);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFilme() {
+        return filme;
+    }
+
+    public void setFilme(String filme) {
+        this.filme = filme;
+    }
+
+    public LocalDate getDatadofilme() {
+        return datadofilme;
+    }
+
+    public void setDatadofilme(LocalDate datadofilme) {
+        this.datadofilme = datadofilme;
+    }
+
+    public String getTurno() {
+        return turno;
+    }
+
+    public void setTurno(String turno) {
+        this.turno = turno;
+    }
+
+    public int getSala() {
+        return sala;
+    }
+
+    public void setSala(int sala) {
+        this.sala = sala;
+    }
+
+    public double getValor() {
+        return valor;
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+}
+
+class Ingresso {
+    public Ingresso() {
+    }
+
+    public String apresentarValorIngressos(Filme filme) {
+        double valor = filme.getValor();
+        double turno1 = (valor * 0.5) * 0.9;
+        double turno2 = (valor * 0.6) * 0.9;
+        double turno3 = (valor * 0.7) * 0.9;
+        double turno4 = (valor * 0.8) * 0.9;
+        return """
+                Preços:
+                Menores de 12 anos: R$ %.2f | Turno Vespertino: R$ %.2f
+                Entre 12 e 15 anos: R$ %.2f | Turno Vespertino: R$ %.2f
+                Entre 16 e 20 anos: R$ %.2f | Turno Vespertino: R$ %.2f
+                Maiores de 20 anos: R$ %.2f | Turno Vespertino: R$ %.2f
+                """.formatted(valor * 0.5, turno1,
+                valor * 0.6, turno2,
+                valor * 0.7, turno3,
+                valor * 0.8, turno4);
+    }
+}
+
+class Cliente {
+    private String nome;
+    private int idade;
+    private int id;
+
+    public Cliente(String nome, int idade, int id) {
+        this.nome = nome;
+        this.idade = idade;
+        this.id = id;
+    }
 
 
+    public String toString() {
+        return """
+                %d - %s (%d anos)""".formatted(id, nome, idade);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+}
+
+public class Main {
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -227,8 +467,6 @@ public class MainScreen {
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);
         }
-        new MainScreen();
+        SwingUtilities.invokeLater(MainScreen::new);
     }
-
-
 }

@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 
-public class MainScreen {
+class MainScreen {
 
     private JPanel Main;
     private JPanel Client;
@@ -84,10 +84,11 @@ public class MainScreen {
             Mostrar(nome, sexo, endereco, categoria, filme);
         });
         cancelButton.addActionListener(e -> System.exit(0));
-
     }
+}
 
+public class Main {
     public static void main(String[] args) {
-        new MainScreen();
+        SwingUtilities.invokeLater(MainScreen::new);
     }
 }

@@ -2,6 +2,84 @@ package AtvEmSala01;
 
 import javax.swing.*;
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+class MainScreen {
+    private JPanel mainPanel;
+    JPanel welcomePanel;
+    private JLabel mainLabel;
+
+    public MainScreen(String name) {
+        mainLabel.setText("Seja Bem-Vindo " + name + "!");
+        JFrame frame = new JFrame("Tela Principal");
+        frame.setContentPane(mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {
+            Logger logger = Logger.getLogger(AtvEmSala01.MainScreen.class.getName());
+            logger.severe("An error occurred while setting the look and feel:");
+            logger.severe(e.getMessage());
+            logger.log(Level.SEVERE, "Exception details:", e);
+        }
+    }
+}
+
+class LoginScreen {
+    private JPanel mainPanel;
+    JPanel loginPanel;
+    private JTextField loginField;
+    private JPasswordField passField;
+    JLabel loginLabel;
+    JLabel passLabel;
+    private JButton clearButton;
+    private JButton loginButton;
+    JLabel ifgLogo;
+
+    private final UsuarioDAO usuarioDAO;
+
+    private void OnLoginClick() {
+        // autenticate with DAO and show main screen
+        String login = loginField.getText();
+        String senha = new String(passField.getPassword());
+        if (usuarioDAO.autenticar(login, senha)) {
+            new MainScreen(login);
+            JFrame frame = (JFrame) SwingUtilities.getWindowAncestor(mainPanel);
+            frame.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Usuário ou senha incorretos.");
+        }
+    }
+
+    public LoginScreen() {
+        usuarioDAO = new UsuarioDAOImpl();
+        JFrame frame = new JFrame("Tela de Login");
+        frame.setContentPane(mainPanel);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.pack();
+        frame.setVisible(true);
+        frame.setResizable(false);
+        frame.setLocationRelativeTo(null);
+        loginButton.addActionListener(e -> OnLoginClick());
+        clearButton.addActionListener(e -> {
+            loginField.setText("");
+            passField.setText("");
+        });
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {
+            Logger logger = Logger.getLogger(AtvEmSala01.LoginScreen.class.getName());
+            logger.severe("An error occurred while setting the look and feel:");
+            logger.severe(e.getMessage());
+            logger.log(Level.SEVERE, "Exception details:", e);
+        }
+    }
+}
 
 class DatabaseManager {
     private static final String DB_URL = "jdbc:mysql://localhost:3306/atvemsala01";
@@ -54,6 +132,7 @@ class Usuario {
         this.login = login;
         this.senha = senha;
     }
+
     public void metodoFantasma() {
         // Esse método é apenas para agradar a inspeção do IntelliJ
     }

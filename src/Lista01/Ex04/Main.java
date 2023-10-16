@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class MainScreen {
+class MainScreen {
     private JPanel Main;
     private JPanel NumPanel;
     private JTextField NumField;
@@ -78,7 +78,7 @@ public class MainScreen {
 
     public MainScreen() {
         Nums array = new Nums();
-        JFrame frame = new JFrame("Array");
+        JFrame frame = new JFrame("Array Manager");
         frame.setContentPane(Main);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
@@ -112,16 +112,22 @@ public class MainScreen {
             array.nums.clear();
         });
     }
+}
 
+class Nums {
+    ArrayList<Double> nums = new ArrayList<>();
+}
+
+public class Main {
     public static void main(String[] args) {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(Lista01.Ex06.MainScreen.class.getName());
+            Logger logger = Logger.getLogger(Lista01.Ex04.MainScreen.class.getName());
             logger.severe("An error occurred while setting the look and feel:");
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);
         }
-        new MainScreen();
+        SwingUtilities.invokeLater(Lista01.Ex04.MainScreen::new);
     }
 }

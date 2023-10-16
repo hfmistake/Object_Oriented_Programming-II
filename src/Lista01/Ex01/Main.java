@@ -6,7 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainScreen extends JFrame {
+class MainScreen {
 
     private JLabel Title;
     private JTextField Montante;
@@ -49,11 +49,10 @@ public class MainScreen extends JFrame {
             }
         });
     }
+}
 
+public class Main {
     public static void main(String[] args) {
-        new MainScreen();
-    }
-
-    public static class Calculadora {
+        SwingUtilities.invokeLater(MainScreen::new);
     }
 }

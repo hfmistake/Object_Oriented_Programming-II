@@ -2,8 +2,25 @@ package Lista01.Ex05;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class LivroGUI {
+class Livro {
+    String title;
+    int qntPaginas;
+
+    public Livro(String t, int qnt) {
+        this.title = t;
+        this.qntPaginas = qnt;
+    }
+
+    public String toString() {
+        return """
+                %s (%d)""".formatted(title, qntPaginas);
+    }
+}
+
+class LivroGUI {
 
     private JPanel Main;
     private JPanel Livros;
@@ -88,7 +105,7 @@ public class LivroGUI {
             }
 
             Livro livro = new Livro(nome, qnt);
-            livros.set(trackindex,livro);
+            livros.set(trackindex, livro);
             bookTrackerUpdater();
         });
         excluirButton.addActionListener(e -> {
@@ -97,8 +114,18 @@ public class LivroGUI {
             bookTrackerUpdater();
         });
     }
+}
 
+public class Main {
     public static void main(String[] args) {
-        new LivroGUI();
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (Exception e) {
+            Logger logger = Logger.getLogger(LivroGUI.class.getName());
+            logger.severe("An error occurred while setting the look and feel:");
+            logger.severe(e.getMessage());
+            logger.log(Level.SEVERE, "Exception details:", e);
+        }
+        SwingUtilities.invokeLater(LivroGUI::new);
     }
 }
