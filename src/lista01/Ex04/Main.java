@@ -1,4 +1,4 @@
-package Lista01.Ex04;
+package lista01.Ex04;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -119,11 +119,11 @@ public class Main {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(Lista01.Ex04.MainScreen.class.getName());
+            Logger logger = Logger.getLogger(lista01.Ex04.MainScreen.class.getName());
             logger.severe("An error occurred while setting the look and feel:");
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);
         }
-        SwingUtilities.invokeLater(Lista01.Ex04.MainScreen::new);
+        SwingUtilities.invokeLater(lista01.Ex04.MainScreen::new);
     }
 }

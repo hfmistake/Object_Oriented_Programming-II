@@ -1,4 +1,4 @@
-package Lista01.Ex05;
+package lista01.Ex05;
 
 import javax.swing.*;
 import java.util.ArrayList;

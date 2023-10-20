@@ -1,4 +1,4 @@
-package Lista01.Ex06;
+package lista01.Ex06;
 
 import javax.swing.*;
 import java.time.LocalDate;

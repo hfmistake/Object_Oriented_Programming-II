@@ -1,4 +1,4 @@
-package Lista01.Ex03;
+package lista01.Ex03;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -126,7 +126,7 @@ public class Main {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(Lista01.Ex03.MainScreen.class.getName());
+            Logger logger = Logger.getLogger(lista01.Ex03.MainScreen.class.getName());
             logger.severe("An error occurred while setting the look and feel:");
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);

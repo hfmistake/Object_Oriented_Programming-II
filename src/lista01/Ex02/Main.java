@@ -1,4 +1,4 @@
-package Lista01.Ex02;
+package lista01.Ex02;
 
 import javax.swing.*;
 import javax.swing.border.Border;
