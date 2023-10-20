@@ -22,16 +22,16 @@ class Livro {
 
 class LivroGUI {
 
-    private JPanel Main;
-    private JPanel Livros;
-    private JTextField nomeField;
-    private JTextField pageField;
-    private JButton adicionarButton;
-    private JButton alterarButton;
-    private JButton excluirButton;
-    private JList<Livro> BookList;
-    private final ArrayList<Livro> livros = new ArrayList<>();
-    private final DefaultListModel<Livro> listModel = new DefaultListModel<>();
+    JPanel Main;
+    JPanel Livros;
+    JTextField nomeField;
+    JTextField pageField;
+    JButton adicionarButton;
+    JButton alterarButton;
+    JButton excluirButton;
+    JList<Livro> BookList;
+    final ArrayList<Livro> livros = new ArrayList<>();
+    final DefaultListModel<Livro> listModel = new DefaultListModel<>();
 
     public void bookTrackerUpdater() {
         listModel.clear();
@@ -50,7 +50,7 @@ class LivroGUI {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         adicionarButton.addActionListener(e -> {
-            int pages = 0;
+            int pages;
             if (nomeField.getText().isEmpty() ||
                     pageField.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(null,
@@ -74,7 +74,7 @@ class LivroGUI {
             pageField.setText("");
         });
         alterarButton.addActionListener(e -> {
-            int qnt = 0;
+            int qnt;
             Livro target = BookList.getSelectedValue();
             if (target == null) {
                 JOptionPane.showMessageDialog(null,

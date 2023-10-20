@@ -9,52 +9,52 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MainScreen {
-    private JPanel MainPanel;
-    private JTabbedPane Panel;
-    private JPanel ClientesPane;
-    private JPanel CadClientePanel;
-    private JTextField NomeClienteField;
-    private JTextField IdadeField;
-    private JPanel ClienteButtons;
-    private JPanel ClientesDisplay;
-    private JButton ClienteSalvarButton;
-    private JButton ClienteAlterarButton;
-    private JButton ClienteExcluirButton;
-    private JList<Cliente> ClientesList;
-    private JPanel FilmesPane;
-    private JPanel IngressoPane;
-    private JTextField SalaField;
-    private JTextField IngressoField;
-    private JPanel FilmesCadPane;
-    private JPanel FilmesButtons;
-    private JPanel FilmesDisplay;
-    private JComboBox<String> TurnoBox;
-    private JComboBox<String> FilmeSelectionBox;
-    private JPanel IngressoFilmePane;
-    private JButton ViewDataButton;
-    private JPanel IngressoButton;
-    private JPanel IngressoSelection;
-    private JList<Filme> FilmesList;
-    private JTextField NomeFilmeField;
-    private JLabel DataFilmeLabel;
-    private JLabel NomeFilmeLabel;
-    private JTextField DataFilmeField;
-    private JLabel TurnoLabel;
-    private JLabel SalaLabel;
-    private JLabel IngressoLabel;
-    private JLabel FilmeSelectionLabel;
-    private JLabel NomeClienteLabel;
-    private JLabel IdadeLabel;
-    private JButton FilmesSalvarButton;
-    private JButton FilmesAlterarButton;
-    private JButton FilmesExcluirButton;
-    private int clientesTracker = 0;
-    private int filmesTracker = 0;
-    private final ArrayList<Cliente> clientes = new ArrayList<>();
-    private final ArrayList<Filme> filmes = new ArrayList<>();
-    private final DefaultListModel<Cliente> clienteModel = new DefaultListModel<>();
-    private final DefaultListModel<Filme> filmeModel = new DefaultListModel<>();
-    private final DefaultComboBoxModel<String> filmeComboModel = new DefaultComboBoxModel<>();
+     JPanel MainPanel;
+     JTabbedPane Panel;
+     JPanel ClientesPane;
+     JPanel CadClientePanel;
+     JTextField NomeClienteField;
+     JTextField IdadeField;
+     JPanel ClienteButtons;
+     JPanel ClientesDisplay;
+     JButton ClienteSalvarButton;
+     JButton ClienteAlterarButton;
+     JButton ClienteExcluirButton;
+     JList<Cliente> ClientesList;
+     JPanel FilmesPane;
+     JPanel IngressoPane;
+     JTextField SalaField;
+     JTextField IngressoField;
+     JPanel FilmesCadPane;
+     JPanel FilmesButtons;
+    JPanel FilmesDisplay;
+    JComboBox<String> TurnoBox;
+    JComboBox<String> FilmeSelectionBox;
+    JPanel IngressoFilmePane;
+    JButton ViewDataButton;
+    JPanel IngressoButton;
+    JPanel IngressoSelection;
+     JList<Filme> FilmesList;
+     JTextField NomeFilmeField;
+    JLabel DataFilmeLabel;
+     JLabel NomeFilmeLabel;
+     JTextField DataFilmeField;
+     JLabel TurnoLabel;
+     JLabel SalaLabel;
+     JLabel IngressoLabel;
+     JLabel FilmeSelectionLabel;
+     JLabel NomeClienteLabel;
+     JLabel IdadeLabel;
+     JButton FilmesSalvarButton;
+     JButton FilmesAlterarButton;
+     JButton FilmesExcluirButton;
+     int clientesTracker = 0;
+     int filmesTracker = 0;
+     final ArrayList<Cliente> clientes = new ArrayList<>();
+     final ArrayList<Filme> filmes = new ArrayList<>();
+     final DefaultListModel<Cliente> clienteModel = new DefaultListModel<>();
+     final DefaultListModel<Filme> filmeModel = new DefaultListModel<>();
+     final DefaultComboBoxModel<String> filmeComboModel = new DefaultComboBoxModel<>();
 
 
     public void clienteModelTracker() {
@@ -90,7 +90,7 @@ class MainScreen {
         clienteModelTracker();
     }
 
-    private void salvarFilme() {
+     void salvarFilme() {
         String nomeFilme = NomeFilmeField.getText();
         String dataDoTextField = DataFilmeField.getText();
         String turno = (String) TurnoBox.getSelectedItem();
@@ -142,8 +142,8 @@ class MainScreen {
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
         ClienteSalvarButton.addActionListener(e -> {
-            String nome = "";
-            int idade = 0;
+            String nome;
+            int idade;
             int id = clientesTracker;
             try {
                 idade = Integer.parseInt(IdadeField.getText());
@@ -221,14 +221,14 @@ class MainScreen {
 }
 
 class ClienteEditor {
-    private JPanel MainPanel;
-    private JPanel Editor;
-    private JTextField NomeField;
-    private JLabel Title;
-    private JTextField IdadeField;
-    private JButton finalizarButton;
-    private JLabel NomeLabel;
-    private JLabel IdadeLabel;
+     JPanel MainPanel;
+     JPanel Editor;
+     JTextField NomeField;
+     JLabel Title;
+     JTextField IdadeField;
+     JButton finalizarButton;
+     JLabel NomeLabel;
+     JLabel IdadeLabel;
 
     public ClienteEditor(MainScreen telaPrincipal, Cliente cliente) {
         JFrame frame = new JFrame("Editor de Cliente");
@@ -263,20 +263,20 @@ class ClienteEditor {
 }
 
 class FilmeEditor {
-    private JPanel Editor;
-    private JLabel NomeFilmeLabel;
-    private JTextField NomeFilmeField;
-    private JLabel Title;
-    private JLabel DataLabel;
-    private JTextField DataFilmeField;
-    private JButton finalizarButton;
-    private JPanel MainPanel;
-    private JLabel TurnoFilmeLabel;
-    private JComboBox<String> TurnoBox;
-    private JTextField ValorIngressoField;
-    private JLabel ValorIngressoLabel;
-    private JTextField SalaField;
-    private JLabel SalaLabel;
+     JPanel Editor;
+     JLabel NomeFilmeLabel;
+     JTextField NomeFilmeField;
+     JLabel Title;
+     JLabel DataLabel;
+     JTextField DataFilmeField;
+     JButton finalizarButton;
+     JPanel MainPanel;
+     JLabel TurnoFilmeLabel;
+     JComboBox<String> TurnoBox;
+     JTextField ValorIngressoField;
+     JLabel ValorIngressoLabel;
+     JTextField SalaField;
+     JLabel SalaLabel;
 
     public FilmeEditor(MainScreen mainScreen, Filme filme) {
         JFrame frame = new JFrame("Editor de filme");
@@ -334,9 +334,7 @@ class Filme {
     }
 
     public String toString() {
-        int dia, mes, ano;
-        dia = datadofilme.getDayOfMonth();
-        mes = datadofilme.getMonthValue();
+        int ano;
         ano = datadofilme.getYear();
         String valorFormatado = String.format("%.2f", valor);
         return """
@@ -416,9 +414,9 @@ class Ingresso {
 }
 
 class Cliente {
-    private String nome;
-    private int idade;
-    private int id;
+     String nome;
+     int idade;
+     int id;
 
     public Cliente(String nome, int idade, int id) {
         this.nome = nome;

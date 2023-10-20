@@ -58,18 +58,18 @@ class Calculadora {
 }
 
 class MainScreen {
-    private JLabel Title;
-    private JTextField N1;
-    private JTextField N2;
-    private JButton Add;
-    private JPanel ButtonPanel;
-    private JPanel Main;
-    private JPanel Tab;
-    private JButton Sub;
-    private JButton Mul;
-    private JButton Div;
-    private JButton ModoButton;
-    private char Modo = '1';
+     JLabel Title;
+     JTextField N1;
+     JTextField N2;
+     JButton Add;
+     JPanel ButtonPanel;
+     JPanel Main;
+     JPanel Tab;
+     JButton Sub;
+     JButton Mul;
+     JButton Div;
+     JButton ModoButton;
+     char Modo = '1';
 
 
     public MainScreen() {

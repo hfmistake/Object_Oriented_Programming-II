@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 Object Oriented Programming II.iml
 .idea
+/OOPII.iml
 
 ### Eclipse ###
 .apt_generated
@@ -29,3 +30,4 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+

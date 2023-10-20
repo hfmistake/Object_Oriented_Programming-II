@@ -6,17 +6,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MainScreen {
-    private JPanel Main;
-    private JPanel NumPanel;
-    private JTextField NumField;
-    private JLabel NumLabel;
-    private JButton Limpar;
-    private JTextField MaxField;
-    private JTextField MinField;
-    private JTextField AvgField;
-    private JButton FinalButton;
-    private JButton cadastrarButton;
-    private JButton ViewArray;
+    JPanel Main;
+    JPanel NumPanel;
+    JTextField NumField;
+    JLabel NumLabel;
+    JButton Limpar;
+    JTextField MaxField;
+    JTextField MinField;
+    JTextField AvgField;
+    JButton FinalButton;
+    JButton cadastrarButton;
+    JButton ViewArray;
 
     public boolean validateArray(ArrayList<Double> arr) {
         return arr.isEmpty();
@@ -105,12 +105,8 @@ class MainScreen {
             }
             NumField.setText("");
         });
-        ViewArray.addActionListener(e -> {
-            JOptionPane.showMessageDialog(null, ListToStr(array.nums));
-        });
-        Limpar.addActionListener(e -> {
-            array.nums.clear();
-        });
+        ViewArray.addActionListener(e -> JOptionPane.showMessageDialog(null, ListToStr(array.nums)));
+        Limpar.addActionListener(e -> array.nums.clear());
     }
 }
 

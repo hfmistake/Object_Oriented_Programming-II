@@ -3,19 +3,17 @@ package Lista01.Ex01;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 class MainScreen {
 
-    private JLabel Title;
-    private JTextField Montante;
-    private JTextField Juros;
-    private JTextField Meses;
-    private JPanel Main;
-    private JPanel Form;
-    private JButton calcularButton;
-    private JLabel result;
+    JLabel Title;
+    JTextField Montante;
+    JTextField Juros;
+    JTextField Meses;
+    JPanel Main;
+    JPanel Form;
+    JButton calcularButton;
+    JLabel result;
 
     public MainScreen() {
         JFrame frame = new JFrame("Poupex");
@@ -28,23 +26,20 @@ class MainScreen {
         frame.setVisible(true);
         frame.setResizable(false);
         frame.setLocationRelativeTo(null);
-        calcularButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == calcularButton) {
-                    try {
-                        double montante = Double.parseDouble(Montante.getText());
-                        double juros = Double.parseDouble(Juros.getText());
-                        int meses = Integer.parseInt(Meses.getText());
-                        double valorFuturo = montante + juros * meses;
-                        if (valorFuturo == (int) valorFuturo) {
-                            result.setText(String.valueOf((int) valorFuturo));
-                        } else {
-                            result.setText(String.valueOf(valorFuturo));
-                        }
-                    } catch (NumberFormatException ex) {
-                        JOptionPane.showMessageDialog(null, "Dados inválidos");
+        calcularButton.addActionListener(e -> {
+            if (e.getSource() == calcularButton) {
+                try {
+                    double montante = Double.parseDouble(Montante.getText());
+                    double juros = Double.parseDouble(Juros.getText());
+                    int meses = Integer.parseInt(Meses.getText());
+                    double valorFuturo = montante + juros * meses;
+                    if (valorFuturo == (int) valorFuturo) {
+                        result.setText(String.valueOf((int) valorFuturo));
+                    } else {
+                        result.setText(String.valueOf(valorFuturo));
                     }
+                } catch (NumberFormatException ex) {
+                    JOptionPane.showMessageDialog(null, "Dados inválidos");
                 }
             }
         });

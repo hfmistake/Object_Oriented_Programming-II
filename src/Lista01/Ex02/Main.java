@@ -6,21 +6,21 @@ import java.awt.*;
 
 class MainScreen {
 
-    private JPanel Main;
-    private JPanel Client;
-    private JLabel LabelNome;
-    private JTextField Nome;
-    private JTextField Endereco;
-    private JLabel LabelEnd;
-    private JComboBox<String> CategoriaBox;
-    private JLabel LabelCat;
-    private JRadioButton masculinoRadioButton;
-    private JRadioButton femininoRadioButton;
-    private JList<String> ListaFilmes;
-    private JButton OKButton;
-    private JButton cancelButton;
-    private JLabel LabelFilme;
-    private JPanel ListPanel;
+    JPanel Main;
+    JPanel Client;
+    JLabel LabelNome;
+    JTextField Nome;
+    JTextField Endereco;
+    JLabel LabelEnd;
+    JComboBox<String> CategoriaBox;
+    JLabel LabelCat;
+    JRadioButton masculinoRadioButton;
+    JRadioButton femininoRadioButton;
+    JList<String> ListaFilmes;
+    JButton OKButton;
+    JButton cancelButton;
+    JLabel LabelFilme;
+    JPanel ListPanel;
 
     public void Mostrar(String n, String e, String s, String c, String f) {
         String message = """
