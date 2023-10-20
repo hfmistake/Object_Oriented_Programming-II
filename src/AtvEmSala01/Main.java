@@ -6,9 +6,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MainScreen {
-    private JPanel mainPanel;
+    JPanel mainPanel;
     JPanel welcomePanel;
-    private JLabel mainLabel;
+    JLabel mainLabel;
 
     public MainScreen(String name) {
         mainLabel.setText("Seja Bem-Vindo " + name + "!");
@@ -31,19 +31,19 @@ class MainScreen {
 }
 
 class LoginScreen {
-    private JPanel mainPanel;
+    JPanel mainPanel;
     JPanel loginPanel;
-    private JTextField loginField;
-    private JPasswordField passField;
+    JTextField loginField;
+    JPasswordField passField;
     JLabel loginLabel;
     JLabel passLabel;
-    private JButton clearButton;
-    private JButton loginButton;
+    JButton clearButton;
+    JButton loginButton;
     JLabel ifgLogo;
 
-    private final UsuarioDAO usuarioDAO;
+    final UsuarioDAO usuarioDAO;
 
-    private void OnLoginClick() {
+    void OnLoginClick() {
         // autenticate with DAO and show main screen
         String login = loginField.getText();
         String senha = new String(passField.getPassword());
@@ -82,14 +82,14 @@ class LoginScreen {
 }
 
 class DatabaseManager {
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/atvemsala01";
-    private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
-    private static DatabaseManager instance;
+    static final String DB_URL = "jdbc:mysql://localhost:3306/atvemsala01";
+    static final String DB_USER = "root";
+    static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
+    static DatabaseManager instance;
 
-    private Connection connection;
+    Connection connection;
 
-    private DatabaseManager() {
+    DatabaseManager() {
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
@@ -123,9 +123,9 @@ class Usuario {
     // Essa classe Usuario é utilizada para representar um usuario enquanto objeto no programa
     // no problema atual não é necessário, mas é uma boa prática. Irei instanciar um usuario qualquer
     // apenas para agradar a inspeção do IntelliJ.
-    private int id;
-    private String login;
-    private String senha;
+    int id;
+    String login;
+    String senha;
 
     public Usuario(int id, String login, String senha) {
         this.id = id;
@@ -167,7 +167,7 @@ interface UsuarioDAO {
 }
 
 class UsuarioDAOImpl implements UsuarioDAO {
-    private final Connection connection;
+    final Connection connection;
 
     public UsuarioDAOImpl() {
         this.connection = DatabaseManager.getInstance().getConnection();
