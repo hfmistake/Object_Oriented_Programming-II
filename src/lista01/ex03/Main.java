@@ -1,4 +1,4 @@
-package lista01.Ex03;
+package lista01.ex03;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -58,18 +58,19 @@ class Calculadora {
 }
 
 class MainScreen {
-     JLabel Title;
-     JTextField N1;
-     JTextField N2;
-     JButton Add;
-     JPanel ButtonPanel;
-     JPanel Main;
-     JPanel Tab;
-     JButton Sub;
-     JButton Mul;
-     JButton Div;
-     JButton ModoButton;
-     char Modo = '1';
+    protected JLabel Title;
+    protected JTextField N1;
+    protected JTextField N2;
+    protected JButton Add;
+    protected JPanel ButtonPanel;
+
+    protected JPanel Main;
+    protected JPanel Tab;
+    protected JButton Sub;
+    protected JButton Mul;
+    protected JButton Div;
+    protected JButton ModoButton;
+    char Modo = '1';
 
 
     public MainScreen() {
@@ -126,7 +127,7 @@ public class Main {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(lista01.Ex03.MainScreen.class.getName());
+            Logger logger = Logger.getLogger(lista01.ex03.MainScreen.class.getName());
             logger.severe("An error occurred while setting the look and feel:");
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);

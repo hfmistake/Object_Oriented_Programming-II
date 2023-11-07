@@ -1,4 +1,4 @@
-package lista01.Ex02;
+package lista01.ex02;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,21 +6,21 @@ import java.awt.*;
 
 class MainScreen {
 
-    JPanel Main;
-    JPanel Client;
-    JLabel LabelNome;
-    JTextField Nome;
-    JTextField Endereco;
-    JLabel LabelEnd;
-    JComboBox<String> CategoriaBox;
-    JLabel LabelCat;
-    JRadioButton masculinoRadioButton;
-    JRadioButton femininoRadioButton;
-    JList<String> ListaFilmes;
-    JButton OKButton;
-    JButton cancelButton;
-    JLabel LabelFilme;
-    JPanel ListPanel;
+    protected JPanel Main;
+    protected JPanel Client;
+    protected JLabel LabelNome;
+    protected JTextField Nome;
+    protected JTextField Endereco;
+    protected JLabel LabelEnd;
+    protected JComboBox<String> CategoriaBox;
+    protected JLabel LabelCat;
+    protected JRadioButton masculinoRadioButton;
+    protected JRadioButton femininoRadioButton;
+    protected JList<String> ListaFilmes;
+    protected JButton OKButton;
+    protected JButton cancelButton;
+    protected JLabel LabelFilme;
+    protected JPanel ListPanel;
 
     public void Mostrar(String n, String e, String s, String c, String f) {
         String message = """

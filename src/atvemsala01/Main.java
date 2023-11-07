@@ -6,9 +6,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MainScreen {
-    JPanel mainPanel;
-    JPanel welcomePanel;
-    JLabel mainLabel;
+    protected JPanel mainPanel;
+    protected JPanel welcomePanel;
+    protected JLabel mainLabel;
 
     public MainScreen(String name) {
         mainLabel.setText("Seja Bem-Vindo " + name + "!");
@@ -31,15 +31,15 @@ class MainScreen {
 }
 
 class LoginScreen {
-    JPanel mainPanel;
-    JPanel loginPanel;
-    JTextField loginField;
-    JPasswordField passField;
-    JLabel loginLabel;
-    JLabel passLabel;
-    JButton clearButton;
-    JButton loginButton;
-    JLabel ifgLogo;
+    protected JPanel mainPanel;
+    protected JPanel loginPanel;
+    protected JTextField loginField;
+    protected JPasswordField passField;
+    protected JLabel loginLabel;
+    protected JLabel passLabel;
+    protected JButton clearButton;
+    protected JButton loginButton;
+    protected JLabel ifgLogo;
 
     final UsuarioDAO usuarioDAO;
 
@@ -57,7 +57,7 @@ class LoginScreen {
     }
 
     public LoginScreen() {
-        usuarioDAO = new UsuarioDAOImpl();
+        usuarioDAO = new UsuarioDAOmysql();
         JFrame frame = new JFrame("Tela de Login");
         frame.setContentPane(mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -83,13 +83,13 @@ class LoginScreen {
 
 class DatabaseManager {
     static final String DB_URL = "jdbc:mysql://localhost:3306/atvemsala01";
-    static final String DB_USER = "root";
+    static final String DB_USER = System.getenv("DB_USER");
     static final String DB_PASSWORD = System.getenv("DB_PASSWORD");
-    static DatabaseManager instance;
+    private static DatabaseManager instance;
 
-    Connection connection;
+    private static Connection connection;
 
-    DatabaseManager() {
+    private DatabaseManager() {
         try {
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
         } catch (SQLException e) {
@@ -97,7 +97,7 @@ class DatabaseManager {
         }
     }
 
-    public static DatabaseManager getInstance() {
+    public static synchronized DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
         }
@@ -166,10 +166,10 @@ interface UsuarioDAO {
     boolean autenticar(String login, String senha);
 }
 
-class UsuarioDAOImpl implements UsuarioDAO {
+class UsuarioDAOmysql implements UsuarioDAO {
     final Connection connection;
 
-    public UsuarioDAOImpl() {
+    public UsuarioDAOmysql() {
         this.connection = DatabaseManager.getInstance().getConnection();
     }
 

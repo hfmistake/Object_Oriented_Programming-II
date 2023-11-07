@@ -1,4 +1,4 @@
-package lista01.Ex01;
+package lista01.ex01;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -6,14 +6,14 @@ import java.awt.*;
 
 class MainScreen {
 
-    JLabel Title;
-    JTextField Montante;
-    JTextField Juros;
-    JTextField Meses;
-    JPanel Main;
-    JPanel Form;
-    JButton calcularButton;
-    JLabel result;
+    protected JLabel Title;
+    protected JTextField Montante;
+    protected JTextField Juros;
+    protected JTextField Meses;
+    protected JPanel Main;
+    protected JPanel Form;
+    protected JButton calcularButton;
+    protected JLabel result;
 
     public MainScreen() {
         JFrame frame = new JFrame("Poupex");

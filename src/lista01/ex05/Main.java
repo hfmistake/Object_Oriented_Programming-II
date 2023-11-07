@@ -1,4 +1,4 @@
-package lista01.Ex05;
+package lista01.ex05;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -22,16 +22,16 @@ class Livro {
 
 class LivroGUI {
 
-    JPanel Main;
-    JPanel Livros;
-    JTextField nomeField;
-    JTextField pageField;
-    JButton adicionarButton;
-    JButton alterarButton;
-    JButton excluirButton;
-    JList<Livro> BookList;
-    final ArrayList<Livro> livros = new ArrayList<>();
-    final DefaultListModel<Livro> listModel = new DefaultListModel<>();
+    protected JPanel Main;
+    protected JPanel Livros;
+    protected JTextField nomeField;
+    protected JTextField pageField;
+    protected JButton adicionarButton;
+    protected JButton alterarButton;
+    protected JButton excluirButton;
+    protected JList<Livro> BookList;
+    protected final ArrayList<Livro> livros = new ArrayList<>();
+    protected final DefaultListModel<Livro> listModel = new DefaultListModel<>();
 
     public void bookTrackerUpdater() {
         listModel.clear();

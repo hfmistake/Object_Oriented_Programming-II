@@ -1,4 +1,4 @@
-package lista01.Ex04;
+package lista01.ex04;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -6,17 +6,17 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MainScreen {
-    JPanel Main;
-    JPanel NumPanel;
-    JTextField NumField;
-    JLabel NumLabel;
-    JButton Limpar;
-    JTextField MaxField;
-    JTextField MinField;
-    JTextField AvgField;
-    JButton FinalButton;
-    JButton cadastrarButton;
-    JButton ViewArray;
+    protected JPanel Main;
+    protected JPanel NumPanel;
+    protected JTextField NumField;
+    protected JLabel NumLabel;
+    protected JButton Limpar;
+    protected JTextField MaxField;
+    protected JTextField MinField;
+    protected JTextField AvgField;
+    protected JButton FinalButton;
+    protected JButton cadastrarButton;
+    protected JButton ViewArray;
 
     public boolean validateArray(ArrayList<Double> arr) {
         return arr.isEmpty();
@@ -119,11 +119,11 @@ public class Main {
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(lista01.Ex04.MainScreen.class.getName());
+            Logger logger = Logger.getLogger(lista01.ex04.MainScreen.class.getName());
             logger.severe("An error occurred while setting the look and feel:");
             logger.severe(e.getMessage());
             logger.log(Level.SEVERE, "Exception details:", e);
         }
-        SwingUtilities.invokeLater(lista01.Ex04.MainScreen::new);
+        SwingUtilities.invokeLater(lista01.ex04.MainScreen::new);
     }
 }

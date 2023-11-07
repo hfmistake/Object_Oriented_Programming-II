@@ -1,4 +1,4 @@
-package lista01.Ex06;
+package lista01.ex06;
 
 import javax.swing.*;
 import java.time.LocalDate;
@@ -9,52 +9,52 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class MainScreen {
-     JPanel MainPanel;
-     JTabbedPane Panel;
-     JPanel ClientesPane;
-     JPanel CadClientePanel;
-     JTextField NomeClienteField;
-     JTextField IdadeField;
-     JPanel ClienteButtons;
-     JPanel ClientesDisplay;
-     JButton ClienteSalvarButton;
-     JButton ClienteAlterarButton;
-     JButton ClienteExcluirButton;
-     JList<Cliente> ClientesList;
-     JPanel FilmesPane;
-     JPanel IngressoPane;
-     JTextField SalaField;
-     JTextField IngressoField;
-     JPanel FilmesCadPane;
-     JPanel FilmesButtons;
-    JPanel FilmesDisplay;
-    JComboBox<String> TurnoBox;
-    JComboBox<String> FilmeSelectionBox;
-    JPanel IngressoFilmePane;
-    JButton ViewDataButton;
-    JPanel IngressoButton;
-    JPanel IngressoSelection;
-     JList<Filme> FilmesList;
-     JTextField NomeFilmeField;
-    JLabel DataFilmeLabel;
-     JLabel NomeFilmeLabel;
-     JTextField DataFilmeField;
-     JLabel TurnoLabel;
-     JLabel SalaLabel;
-     JLabel IngressoLabel;
-     JLabel FilmeSelectionLabel;
-     JLabel NomeClienteLabel;
-     JLabel IdadeLabel;
-     JButton FilmesSalvarButton;
-     JButton FilmesAlterarButton;
-     JButton FilmesExcluirButton;
-     int clientesTracker = 0;
-     int filmesTracker = 0;
-     final ArrayList<Cliente> clientes = new ArrayList<>();
-     final ArrayList<Filme> filmes = new ArrayList<>();
-     final DefaultListModel<Cliente> clienteModel = new DefaultListModel<>();
-     final DefaultListModel<Filme> filmeModel = new DefaultListModel<>();
-     final DefaultComboBoxModel<String> filmeComboModel = new DefaultComboBoxModel<>();
+    protected JPanel MainPanel;
+    protected JTabbedPane Panel;
+    protected JPanel ClientesPane;
+    protected JPanel CadClientePanel;
+    protected JTextField NomeClienteField;
+    protected JTextField IdadeField;
+    protected JPanel ClienteButtons;
+    protected JPanel ClientesDisplay;
+    protected JButton ClienteSalvarButton;
+    protected JButton ClienteAlterarButton;
+    protected JButton ClienteExcluirButton;
+    protected JList<Cliente> ClientesList;
+    protected JPanel FilmesPane;
+    protected JPanel IngressoPane;
+    protected JTextField SalaField;
+    protected JTextField IngressoField;
+    protected JPanel FilmesCadPane;
+    protected JPanel FilmesButtons;
+    protected JPanel FilmesDisplay;
+    protected JComboBox<String> TurnoBox;
+    protected JComboBox<String> FilmeSelectionBox;
+    protected JPanel IngressoFilmePane;
+    protected JButton ViewDataButton;
+    protected JPanel IngressoButton;
+    protected JPanel IngressoSelection;
+    protected JList<Filme> FilmesList;
+    protected JTextField NomeFilmeField;
+    protected JLabel DataFilmeLabel;
+    protected JLabel NomeFilmeLabel;
+    protected JTextField DataFilmeField;
+    protected JLabel TurnoLabel;
+    protected JLabel SalaLabel;
+    protected JLabel IngressoLabel;
+    protected JLabel FilmeSelectionLabel;
+    protected JLabel NomeClienteLabel;
+    protected JLabel IdadeLabel;
+    protected JButton FilmesSalvarButton;
+    protected JButton FilmesAlterarButton;
+    protected JButton FilmesExcluirButton;
+    int clientesTracker = 0;
+    int filmesTracker = 0;
+    final ArrayList<Cliente> clientes = new ArrayList<>();
+    final ArrayList<Filme> filmes = new ArrayList<>();
+    final DefaultListModel<Cliente> clienteModel = new DefaultListModel<>();
+    final DefaultListModel<Filme> filmeModel = new DefaultListModel<>();
+    final DefaultComboBoxModel<String> filmeComboModel = new DefaultComboBoxModel<>();
 
 
     public void clienteModelTracker() {
@@ -90,7 +90,7 @@ class MainScreen {
         clienteModelTracker();
     }
 
-     void salvarFilme() {
+    void salvarFilme() {
         String nomeFilme = NomeFilmeField.getText();
         String dataDoTextField = DataFilmeField.getText();
         String turno = (String) TurnoBox.getSelectedItem();
@@ -221,14 +221,14 @@ class MainScreen {
 }
 
 class ClienteEditor {
-     JPanel MainPanel;
-     JPanel Editor;
-     JTextField NomeField;
-     JLabel Title;
-     JTextField IdadeField;
-     JButton finalizarButton;
-     JLabel NomeLabel;
-     JLabel IdadeLabel;
+    protected JPanel MainPanel;
+    protected JPanel Editor;
+    protected JTextField NomeField;
+    protected JLabel Title;
+    protected JTextField IdadeField;
+    protected JButton finalizarButton;
+    protected JLabel NomeLabel;
+    protected JLabel IdadeLabel;
 
     public ClienteEditor(MainScreen telaPrincipal, Cliente cliente) {
         JFrame frame = new JFrame("Editor de Cliente");
@@ -263,20 +263,20 @@ class ClienteEditor {
 }
 
 class FilmeEditor {
-     JPanel Editor;
-     JLabel NomeFilmeLabel;
-     JTextField NomeFilmeField;
-     JLabel Title;
-     JLabel DataLabel;
-     JTextField DataFilmeField;
-     JButton finalizarButton;
-     JPanel MainPanel;
-     JLabel TurnoFilmeLabel;
-     JComboBox<String> TurnoBox;
-     JTextField ValorIngressoField;
-     JLabel ValorIngressoLabel;
-     JTextField SalaField;
-     JLabel SalaLabel;
+    protected JPanel Editor;
+    protected JLabel NomeFilmeLabel;
+    protected JTextField NomeFilmeField;
+    protected JLabel Title;
+    protected JLabel DataLabel;
+    protected JTextField DataFilmeField;
+    protected JButton finalizarButton;
+    protected JPanel MainPanel;
+    protected JLabel TurnoFilmeLabel;
+    protected JComboBox<String> TurnoBox;
+    protected JTextField ValorIngressoField;
+    protected JLabel ValorIngressoLabel;
+    protected JTextField SalaField;
+    protected JLabel SalaLabel;
 
     public FilmeEditor(MainScreen mainScreen, Filme filme) {
         JFrame frame = new JFrame("Editor de filme");
@@ -414,9 +414,9 @@ class Ingresso {
 }
 
 class Cliente {
-     String nome;
-     int idade;
-     int id;
+    String nome;
+    int idade;
+    int id;
 
     public Cliente(String nome, int idade, int id) {
         this.nome = nome;
