@@ -1,6 +1,7 @@
 package lista02.view;
 
 import lista02.model.Projeto;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -9,7 +10,8 @@ import java.awt.*;
 import java.util.List;
 import java.util.HashMap;
 import java.util.Map;
-public class ProjectManagementView extends JFrame{
+
+public class ProjectManagementView extends JFrame {
     public JPanel windowPanel;
     public JPanel mainPanel;
     public JScrollPane tableScrollPanel;
@@ -80,17 +82,22 @@ public class ProjectManagementView extends JFrame{
     }
 
     static class MultiLineTableCellRenderer extends DefaultTableCellRenderer {
+        @Override
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
                                                        boolean hasFocus, int row, int column) {
-            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
             JTextArea textArea = new JTextArea();
             textArea.setText((String) value);
             textArea.setWrapStyleWord(true);
             textArea.setLineWrap(true);
-            textArea.setOpaque(false);
+            textArea.setOpaque(true);
             textArea.setEditable(false);
-            textArea.setFocusable(false);
-            textArea.setBackground(UIManager.getColor("Label.background"));
+            if (isSelected) {
+                textArea.setBackground(UIManager.getColor("Table.selectionBackground"));
+                textArea.setForeground(table.getSelectionForeground());
+            } else {
+                textArea.setBackground(table.getBackground());
+                textArea.setForeground(table.getForeground());
+            }
             textArea.setFont(UIManager.getFont("Label.font"));
             textArea.setBorder(UIManager.getBorder("Label.border"));
             return textArea;
