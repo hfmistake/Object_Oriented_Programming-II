@@ -119,6 +119,8 @@ public class ProjetoController {
                 projetoDAO.adicionar(projeto);
                 updateTableFromDatabase();
                 formFields.forEach(field -> field.setText(""));
+                formFields.forEach(field -> field.setEnabled(false));
+                projectManagementView.contextLabel.setText("Contexto: Visualizando Projetos");
             } else if (projectManagementView.contextLabel.getText().contains("Editando projeto")) {
                 String contexto = projectManagementView.contextLabel.getText();
                 int id = Integer.parseInt(contexto.substring(contexto.lastIndexOf(" ") + 1));

@@ -80,14 +80,20 @@ public class ProjectManagementView extends JFrame{
     }
 
     static class MultiLineTableCellRenderer extends DefaultTableCellRenderer {
-        @Override
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component rendererComponent = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-            setVerticalAlignment(SwingConstants.TOP);
-            if (rendererComponent instanceof JLabel label) {
-                label.setText("<html>" + value.toString() + "</html>");
-            }
-            return rendererComponent;
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected,
+                                                       boolean hasFocus, int row, int column) {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            JTextArea textArea = new JTextArea();
+            textArea.setText((String) value);
+            textArea.setWrapStyleWord(true);
+            textArea.setLineWrap(true);
+            textArea.setOpaque(false);
+            textArea.setEditable(false);
+            textArea.setFocusable(false);
+            textArea.setBackground(UIManager.getColor("Label.background"));
+            textArea.setFont(UIManager.getFont("Label.font"));
+            textArea.setBorder(UIManager.getBorder("Label.border"));
+            return textArea;
         }
     }
 
