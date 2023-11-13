@@ -40,7 +40,7 @@ public class ProjetoDAOmySQL implements ProjetoDAO {
             PreparedStatement statement = connection.prepareStatement(
                     "UPDATE projeto SET titulo = ?, evento = ?, coordenador = ?, campus = ?, estudante = ?, matricula = ?, cpf = ?, banco = ?, email = ?, conta = ?, celular = ?, agencia = ? WHERE id = ?");
             setInfo(projeto, statement);
-            statement.setInt(13, projeto.getId());
+            statement.setInt(13, projeto.id());
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao atualizar projeto no banco de dados.");
@@ -60,18 +60,18 @@ public class ProjetoDAOmySQL implements ProjetoDAO {
         }
     }
     private void setInfo(Projeto projeto, PreparedStatement statement) throws SQLException {
-        statement.setString(1, projeto.getTitulo());
-        statement.setString(2, projeto.getEvento());
-        statement.setString(3, projeto.getCoordenador());
-        statement.setString(4, projeto.getCampus());
-        statement.setString(5, projeto.getEstudante());
-        statement.setString(6, projeto.getMatricula());
-        statement.setString(7, projeto.getCpf());
-        statement.setString(8, projeto.getBanco());
-        statement.setString(9, projeto.getEmail());
-        statement.setString(10, projeto.getConta());
-        statement.setString(11, projeto.getCelular());
-        statement.setString(12, projeto.getAgencia());
+        statement.setString(1, projeto.titulo());
+        statement.setString(2, projeto.evento());
+        statement.setString(3, projeto.coordenador());
+        statement.setString(4, projeto.campus());
+        statement.setString(5, projeto.estudante());
+        statement.setString(6, projeto.matricula());
+        statement.setString(7, projeto.cpf());
+        statement.setString(8, projeto.banco());
+        statement.setString(9, projeto.email());
+        statement.setString(10, projeto.conta());
+        statement.setString(11, projeto.celular());
+        statement.setString(12, projeto.agencia());
     }
 
     @Override
@@ -122,20 +122,5 @@ public class ProjetoDAOmySQL implements ProjetoDAO {
             projetos.add(projeto);
         }
         return projetos;
-    }
-
-    @Override
-    public boolean authenticate(String login, String senha) {
-        try {
-            PreparedStatement statement = connection.prepareStatement(
-                    "SELECT * FROM usuario WHERE login = ? AND senha = ?");
-            statement.setString(1, login);
-            statement.setString(2, senha);
-            ResultSet result = statement.executeQuery();
-            return result.next();
-        } catch (SQLException e) {
-            System.out.println("Erro ao autenticar usuário no banco de dados.");
-            return false;
-        }
     }
 }

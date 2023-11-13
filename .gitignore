@@ -5,6 +5,7 @@ out/
 Object Oriented Programming II.iml
 .idea
 /OOPII.iml
+qodana.yaml
 
 ### Eclipse ###
 .apt_generated

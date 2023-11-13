@@ -9,5 +9,4 @@ public interface ProjetoDAO {
     List<Projeto> pesquisar(String titulo);
     List<Projeto> listar();
     int trackId();
-    boolean authenticate(String login, String senha);
 }
