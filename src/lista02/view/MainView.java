@@ -1,5 +1,8 @@
 package lista02.view;
 
+import lista02.controller.ControllerFactory;
+import lista02.controller.MainController;
+
 import javax.swing.*;
 
 public class MainView extends JFrame {
@@ -17,6 +20,12 @@ public class MainView extends JFrame {
     public JMenu userMenu;
     public JMenuItem logoutItem;
 
+    private final MainController mainController = ControllerFactory.createMainController(this);
+
+    public MainController getMainController() {
+        return mainController;
+    }
+
     public MainView() {
         setupUI();
         setupListeners();
@@ -32,14 +41,7 @@ public class MainView extends JFrame {
     }
 
     public void setupListeners() {
-        cadastrarItem.addActionListener(e -> {
-            ProjectManagementView projectManagementView = new ProjectManagementView();
-            projectManagementView.setVisible(true);
-        });
-        logoutItem.addActionListener(e -> {
-            LoginView loginView = new LoginView();
-            loginView.setVisible(true);
-            this.dispose();
-        });
+        cadastrarItem.addActionListener(e -> mainController.callProjectManagementView());
+        logoutItem.addActionListener(e -> mainController.logout());
     }
 }

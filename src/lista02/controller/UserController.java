@@ -39,7 +39,7 @@ public class UserController {
         JOptionPane.showMessageDialog(null, "Login efetuado com sucesso.");
         loginView.dispose();
         MainView mainView = new MainView();
-        mainView.setVisible(true);
+        mainView.getMainController().showMainView();
         mainView.userLabel.setText("User: " + login);
         mainView.dataLabel.setText("Data: " + new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
     }

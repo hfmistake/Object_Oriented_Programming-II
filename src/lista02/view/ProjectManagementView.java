@@ -139,6 +139,10 @@ public class ProjectManagementView extends JFrame {
         setupTituloTextUI();
     }
 
+    public ProjetoController getProjetoController() {
+        return projetoController;
+    }
+
     public void setupTituloTextUI() {
         tituloField.setBorder(UIManager.getBorder("TextField.border"));
         tituloField.addPropertyChangeListener(evt -> {
