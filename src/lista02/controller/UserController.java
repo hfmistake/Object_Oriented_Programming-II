@@ -20,8 +20,8 @@ public class UserController {
         loginView.setVisible(true);
     }
 
-    public void hideLoginView() {
-        loginView.setVisible(false);
+    public void closeLoginView() {
+        loginView.dispose();
     }
 
     public void loginRequest() {
@@ -37,7 +37,7 @@ public class UserController {
             return;
         }
         JOptionPane.showMessageDialog(null, "Login efetuado com sucesso.");
-        loginView.dispose();
+        loginView.getUserController().closeLoginView();
         MainView mainView = new MainView();
         mainView.getMainController().showMainView();
         mainView.userLabel.setText("User: " + login);

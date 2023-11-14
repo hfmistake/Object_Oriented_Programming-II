@@ -13,12 +13,12 @@ public class MainController {
         mainView.setVisible(true);
     }
 
-    public void hideMainView() {
-        mainView.setVisible(false);
+    public void closeMainView() {
+        mainView.dispose();
     }
 
     public void logout() {
-        mainView.getMainController().hideMainView();
+        mainView.getMainController().closeMainView();
         LoginView loginView = new LoginView();
         loginView.getUserController().showLoginView();
     }
