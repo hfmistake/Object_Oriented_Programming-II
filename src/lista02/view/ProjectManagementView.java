@@ -56,7 +56,7 @@ public class ProjectManagementView extends JFrame {
     public JTable projectTable;
     public JLabel contextLabel;
 
-    private final ProjetoController projetoController;
+    private final ProjetoController projetoController = ControllerFactory.createProjetoController(this);
 
     public Map<Integer, Integer> rowToIdMap = new HashMap<>();
     static String[] colunas = {"Título", "Evento", "Coordenador", "Campus", "Estudante",
@@ -109,10 +109,10 @@ public class ProjectManagementView extends JFrame {
     }
 
     public ProjectManagementView() {
-        this.projetoController = ControllerFactory.createProjetoController(this);
         setupComponents();
         projetoController.updateTableFromDatabase();
     }
+
     public void setupComponents() {
         setupListeners();
         setupUI();

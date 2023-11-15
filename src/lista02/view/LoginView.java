@@ -17,17 +17,15 @@ public class LoginView extends JFrame {
     public JButton limparButton;
     public JPanel formPanel;
     public JLabel logoLabel;
-    private final UserController userController;
+    private final UserController userController = ControllerFactory.createUserController(this);
 
     public UserController getUserController() {
         return userController;
     }
 
     public LoginView() {
-        this.userController = ControllerFactory.createUserController(this);
         setupUI();
-        this.loginButton.addActionListener(e -> userController.loginRequest());
-        this.limparButton.addActionListener(e -> clearFields());
+        setupListeners();
     }
 
     private void setupUI() {
@@ -41,5 +39,10 @@ public class LoginView extends JFrame {
     private void clearFields() {
         loginField.setText("");
         senhaField.setText("");
+    }
+
+    private void setupListeners() {
+        this.loginButton.addActionListener(e -> userController.loginRequest());
+        this.limparButton.addActionListener(e -> clearFields());
     }
 }
