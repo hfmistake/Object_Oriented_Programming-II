@@ -35,8 +35,7 @@ public class UserController {
             return;
         }
         loginView.getUserController().closeLoginView();
-        MainView mainView = new MainView();
+        MainView mainView = new MainView(userDAO.getUser(login));
         mainView.getMainController().showMainView();
-        mainView.getMainController().setCurrentUser(userDAO.getUser(login));
     }
 }

@@ -12,7 +12,7 @@ public class ControllerFactory {
         return new ProjetoController(new ProjetoDAOmySQL(), projectManagementView);
     }
 
-    public static MainController createMainController(MainView mainView) {
-        return new MainController(mainView);
+    public static MainController createMainController(User currentUser ,MainView mainView) {
+        return new MainController(currentUser,mainView);
     }
 }

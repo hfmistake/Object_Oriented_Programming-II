@@ -15,8 +15,9 @@ public class MainController {
         this.currentUser = currentUser;
     }
 
-    public MainController(MainView mainView) {
+    public MainController(User currentUser,MainView mainView) {
         this.mainView = mainView;
+        setCurrentUser(currentUser);
     }
 
     public void showMainView() {

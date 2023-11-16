@@ -2,9 +2,10 @@ package lista02.view;
 
 import lista02.controller.ControllerFactory;
 import lista02.controller.MainController;
+import lista02.model.User;
 
 import javax.swing.*;
-import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class MainView extends JFrame {
     public JPanel windowPanel;
@@ -21,13 +22,14 @@ public class MainView extends JFrame {
     public JMenu userMenu;
     public JMenuItem logoutItem;
 
-    private final MainController mainController = ControllerFactory.createMainController(this);
+    private final MainController mainController;
 
     public MainController getMainController() {
         return mainController;
     }
 
-    public MainView() {
+    public MainView(User currentUser) {
+        this.mainController = ControllerFactory.createMainController(currentUser, this);
         setupUI();
         setupListeners();
         setupUserInfo();
@@ -44,7 +46,8 @@ public class MainView extends JFrame {
 
     public void setupUserInfo() {
         userLabel.setText("Usuário: " + mainController.getCurrentUser().login());
-        dataLabel.setText("Data: " + new Date());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+        dataLabel.setText("Data: " + formatter.format(System.currentTimeMillis()));
     }
 
     public void setupListeners() {
