@@ -5,8 +5,6 @@ import javax.swing.*;
 import lista02.model.*;
 import lista02.view.*;
 
-import java.text.SimpleDateFormat;
-
 public class UserController {
     private final UserDAO userDAO;
     private final LoginView loginView;
@@ -36,11 +34,9 @@ public class UserController {
             JOptionPane.showMessageDialog(null, "Login ou senha incorretos.");
             return;
         }
-        JOptionPane.showMessageDialog(null, "Login efetuado com sucesso.");
         loginView.getUserController().closeLoginView();
         MainView mainView = new MainView();
         mainView.getMainController().showMainView();
-        mainView.userLabel.setText("User: " + login);
-        mainView.dataLabel.setText("Data: " + new SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date()));
+        mainView.getMainController().setCurrentUser(userDAO.getUser(login));
     }
 }

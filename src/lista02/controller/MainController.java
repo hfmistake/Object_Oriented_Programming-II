@@ -1,9 +1,19 @@
 package lista02.controller;
 
+import lista02.model.User;
 import lista02.view.*;
 
 public class MainController {
     private final MainView mainView;
+    private User currentUser;
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
+    }
 
     public MainController(MainView mainView) {
         this.mainView = mainView;

@@ -4,6 +4,7 @@ import lista02.controller.ControllerFactory;
 import lista02.controller.MainController;
 
 import javax.swing.*;
+import java.util.Date;
 
 public class MainView extends JFrame {
     public JPanel windowPanel;
@@ -29,6 +30,7 @@ public class MainView extends JFrame {
     public MainView() {
         setupUI();
         setupListeners();
+        setupUserInfo();
     }
 
     public void setupUI() {
@@ -38,6 +40,11 @@ public class MainView extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+    }
+
+    public void setupUserInfo() {
+        userLabel.setText("Usuário: " + mainController.getCurrentUser().login());
+        dataLabel.setText("Data: " + new Date());
     }
 
     public void setupListeners() {
