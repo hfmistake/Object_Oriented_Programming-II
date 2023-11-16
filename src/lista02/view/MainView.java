@@ -45,7 +45,7 @@ public class MainView extends JFrame {
     }
 
     public void setupUserInfo() {
-        userLabel.setText("Usuário: " + mainController.getCurrentUser().login());
+        userLabel.setText("User: " + mainController.getCurrentUser().login());
         SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
         dataLabel.setText("Data: " + formatter.format(System.currentTimeMillis()));
     }
