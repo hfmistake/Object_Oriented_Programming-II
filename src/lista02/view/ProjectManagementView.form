@@ -319,6 +319,7 @@
                   </grid>
                 </constraints>
                 <properties>
+                  <focusable value="true"/>
                   <text value="Imprimir"/>
                 </properties>
               </component>
@@ -331,6 +332,7 @@
             </constraints>
             <properties>
               <background color="-6697730"/>
+              <focusable value="false"/>
             </properties>
             <border type="line"/>
             <children>
