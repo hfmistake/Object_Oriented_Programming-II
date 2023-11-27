@@ -319,7 +319,7 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <focusable value="true"/>
+                  <focusable value="false"/>
                   <text value="Imprimir"/>
                 </properties>
               </component>
