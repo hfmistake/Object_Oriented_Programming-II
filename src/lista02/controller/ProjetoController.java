@@ -7,6 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import java.util.*;
+import lista02.controller.ReportController;
 
 public class ProjetoController {
     private final ProjetoDAO projetoDAO;
@@ -154,5 +155,17 @@ public class ProjetoController {
         List<JTextComponent> formFields = projectManagementView.getFormFields();
         formFields.forEach(field -> field.setText(""));
         formFields.forEach(field -> field.setEnabled(false));
+    }
+
+    public void callReport() {
+        int selectedRow = projectManagementView.projectTable.getSelectedRow();
+        if (selectedRow < 0) {
+            JOptionPane.showMessageDialog(null,
+                    "Selecione um projeto para gerar o relatório.");
+            return;
+        }
+        int selectedid = projectManagementView.rowToIdMap.get(selectedRow);
+        ReportController reportController = new ReportController();
+        reportController.report(selectedid);
     }
 }

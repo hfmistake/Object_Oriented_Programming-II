@@ -55,6 +55,7 @@ public class ProjectManagementView extends JFrame {
     public JButton buscarButton;
     public JTable projectTable;
     public JLabel contextLabel;
+    private JButton imprimirButton;
 
     private final ProjetoController projetoController = ControllerFactory.createProjetoController(this);
 
@@ -126,6 +127,7 @@ public class ProjectManagementView extends JFrame {
         salvarButton.addActionListener(e -> projetoController.salvarProjeto());
         cancelarButton.addActionListener(e -> projetoController.cancelarProjeto());
         buscarButton.addActionListener(e -> projetoController.buscarProjeto());
+        imprimirButton.addActionListener(e -> projetoController.callReport());
     }
 
     public void setupUI() {
