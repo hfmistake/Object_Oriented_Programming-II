@@ -7,7 +7,6 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.JTextComponent;
 import java.util.*;
-import lista02.controller.ReportController;
 
 public class ProjetoController {
     private final ProjetoDAO projetoDAO;

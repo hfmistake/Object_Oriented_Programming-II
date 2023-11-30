@@ -1,29 +1,21 @@
 package lista02.controller;
 
 
-import java.io.File;
+import lista02.model.DatabaseManager;
+import net.sf.jasperreports.engine.JRResultSetDataSource;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
+
+import javax.swing.*;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.HashMap;
 import java.util.Map;
-import javax.swing.JOptionPane;
-
-import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JRResultSetDataSource;
-import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperFillManager;
-import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.design.JasperDesign;
-import net.sf.jasperreports.engine.util.JRLoader;
-import net.sf.jasperreports.engine.xml.JRXmlLoader;
-import net.sf.jasperreports.view.JasperViewer;
-import org.apache.commons.collections4.map.ReferenceMap;
-
-import lista02.model.DatabaseManager;
 
 public class ReportController {
 
@@ -38,6 +30,7 @@ public class ReportController {
             rs = statement.executeQuery();
             String caminhoRelativo = "/reports/report.jasper";
             URL arquivo = getClass().getResource(caminhoRelativo);
+            assert arquivo != null;
             JasperReport jasperReport = (JasperReport) JRLoader.loadObject(arquivo);
             Map<String, Object> params = new HashMap<>();
             JRResultSetDataSource jrRS = new JRResultSetDataSource(rs);
